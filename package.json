@@ -1,0 +1,38 @@
+{
+  "name": "apm-server",
+  "version": "0.1.0",
+  "description": "监控系统的后端，这只是个中型系统，高并发需要改良系统或是换个技术栈 🤷🤷🤷",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chijitui/apm-server.git"
+  },
+  "keywords": [
+    "apm",
+    "server",
+    "nodejs"
+  ],
+  "author": "chijitui <johnxiao675@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chijitui/apm-server/issues"
+  },
+  "homepage": "https://github.com/chijitui/apm-server#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "^0.0.16",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0"
+  }
+}
