@@ -64,7 +64,7 @@ class Core extends koa {
             const handler = routers[key];
             await handler(ctx, svs, app, next);
           } catch(err) {
-            console.log(err);
+            ctx.body = err;
           }
         });
       });
