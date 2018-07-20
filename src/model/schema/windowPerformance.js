@@ -49,7 +49,8 @@ const windowPerformanceSchema = mongoose.Schema({
       },
     },
     entries: Array,
-    date: Number
+    date: Number,
+    isCompatibled: Boolean
   }]
 });
 
