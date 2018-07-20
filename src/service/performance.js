@@ -5,6 +5,12 @@ const time = require('../utils/time');
 const WindowPerformance = require('../model/schema/windowPerformance');
 
 const window = {
+  /*
+   * Method: writeFiles
+   * Element: perform 初始性能数据 <Object>
+   *          date 测试日期 <Number>
+   * Description: 初始性能数据写入日志，并且调用 consumeLogs 一次入库，减少数据库压力
+  **/
   writeFiles(perform, date) {
     return new Promise((resolve, reject) => {
       const dir = path.join(process.cwd(), 'performance_log', time.minite(date));
@@ -34,6 +40,12 @@ const window = {
       });
     });
   },
+
+  /*
+   * Method: consumeLogs
+   * Element: dirs 入库文件夹列表 <Array>
+   * Description: 文件夹内日志一次入库，并且入库成功之后删除对应日志
+  **/
   consumeLogs(dirs) {
     dirs.map(dir => {
       const dirPath = path.join(process.cwd(), 'performance_log', dir)
