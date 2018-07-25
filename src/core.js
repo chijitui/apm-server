@@ -1,4 +1,4 @@
-const koa = require('koa');
+const Koa = require('koa');
 const fs = require('fs');
 const path = require('path');
 const koaRoute = require('koa-router');
@@ -29,10 +29,9 @@ class CoreLoader {
     const url = path.join(__dirname, 'config');
     return this.loader(url);
   }
-
 }
 
-class Core extends koa {
+class Core extends Koa {
   constructor(props) {
     super(props);
     this.router = new koaRoute();
@@ -63,8 +62,11 @@ class Core extends koa {
           try {
             const handler = routers[key];
             await handler(ctx, svs, app, next);
-          } catch(err) {
-            ctx.body = err;
+          } catch(error) {
+            ctx.body = {
+              code: 50001,
+              error
+            };
           }
         });
       });

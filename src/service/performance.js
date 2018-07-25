@@ -25,7 +25,7 @@ const window = {
               }
               setTimeout(() => {
                 this.consumeLogs(dirs);
-              }, 3000);
+              }, 1000);
               fs.mkdirSync(dir);
               fs.writeFileSync(path.join(dir, name), perform);
             });
