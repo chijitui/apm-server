@@ -1,8 +1,7 @@
 function getRoutes(app) {
-  const { performance } = app.controller;
+  const { project } = app.controller;
   return {
-    'get /api/performance/window': performance.window.get,
-    'post /api/performance/window': performance.window.post,
+    'post /api/project/add': project.add,
   };
 }
 
