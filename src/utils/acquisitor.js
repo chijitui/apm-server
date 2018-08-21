@@ -83,18 +83,18 @@ const acquisitor = function (_id, url) {
 
         function getBaseInfo(url) {
           try {
-            const performance = window.performance || window.msPerformance || window.webkitPerformance;
+            var performance = window.performance || window.msPerformance || window.webkitPerformance;
             if (performance) {
-              const timing = performance.timing;
-              const timeOrigin = performance.timeOrigin ? performance.timeOrigin : performance.timing.fetchStart - 10;
+              var timing = performance.timing;
+              var timeOrigin = performance.timeOrigin ? performance.timeOrigin : performance.timing.fetchStart - 10;
 
               if (timing.loadEventEnd <= 0) {
-                setTimeout(() => {
+                setTimeout(function(){
                   getBaseInfo(url);
                 }, 1000);
                 return;
               }
-              const base = {
+              var base = {
                 url: window.location.href,
                 ua: window.navigator.userAgent,
 

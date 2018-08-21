@@ -63,6 +63,7 @@ class Core extends Koa {
             const handler = routers[key];
             await handler(ctx, svs, app, next);
           } catch(error) {
+            console.log(error)
             ctx.body = {
               code: 50001,
               error
