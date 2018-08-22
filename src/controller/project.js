@@ -1,17 +1,19 @@
-const acquisitor = require('../utils/acquisitor');
-const uglifyjs = require("uglify-js");
-
-const add = async function (ctx, service) {
+const add = async function(ctx, service) {
   const project = await service.project.create(ctx.request.body);
-  const codeBeforeBuild = acquisitor(project._id);
-  const codeAfterBuild = uglifyjs.minify(codeBeforeBuild);
-  console.log(codeAfterBuild);
+  const code = service.project.getCode(project._id);
   ctx.body = {
     project,
-    code: codeAfterBuild.code
+    code
   };
 }
 
+const getCode = function(ctx, service) {
+  const { _id } = ctx.request.query;
+  const code = service.project.getCode(_id);
+  ctx.body = code;
+}
+
 module.exports = {
-  add
+  add,
+  getCode
 };

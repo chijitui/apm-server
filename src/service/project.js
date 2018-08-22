@@ -1,4 +1,6 @@
 const Project = require('../model/schema/project');
+const acquisitor = require('../utils/acquisitor');
+const uglifyjs = require("uglify-js");
 
 const create = function(projectInfo) {
   return new Promise((resolve, reject) => {
@@ -20,6 +22,13 @@ const create = function(projectInfo) {
   });
 }
 
+const getCode = function(_id) {
+  const codeBeforeBuild = acquisitor(_id);
+  const codeAfterBuild = uglifyjs.minify(codeBeforeBuild);
+  return codeAfterBuild.code;
+}
+
 module.exports = {
-  create
+  create,
+  getCode
 };
